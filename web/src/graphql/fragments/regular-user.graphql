@@ -2,6 +2,8 @@ fragment RegularUser on User {
     id
     name
     email
+    avatar
+    bio
     type
     createdAt
     updatedAt

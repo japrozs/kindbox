@@ -16,7 +16,7 @@ import { TbLogout2 } from "react-icons/tb";
 import { useLogoutMutation, useMeQuery } from "@/generated/graphql";
 import { useRouter } from "next/router";
 import { useApolloClient } from "@apollo/client";
-import { autoCapitalizeSentence } from "@/utils";
+import { autoCapitalizeSentence, userTypeObject } from "@/utils";
 import { Button } from "./button";
 
 interface NavbarProps {
@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ sticky }) => {
                                 // colored
                                 label="Login"
                                 mediumFont
-                                className="rounded-lg"
+                                className="rounded-[0.4rem]"
                             />
                         </Link>
                         <Link href={"/signup"} className="min-w-20">
@@ -65,12 +65,18 @@ export const Navbar: React.FC<NavbarProps> = ({ sticky }) => {
                                 // colored
                                 label="Signup"
                                 mediumFont
-                                className="rounded-lg"
+                                className="rounded-[0.4rem]"
                             />
                         </Link>
                     </div>
                 ) : (
                     <div className="flex items-center ml-auto mr-0 space-x-5">
+                        <Button
+                            // colored
+                            label="Create post"
+                            mediumFont
+                            className="rounded-[0.45rem] min-w-28"
+                        />
                         <Menu>
                             <MenuButton className="">
                                 <IoMdMenu
@@ -95,13 +101,18 @@ export const Navbar: React.FC<NavbarProps> = ({ sticky }) => {
                                                 {data?.me?.name}
                                             </p>
                                             <p className="text-xs font-medium text-gray-500">
-                                                {autoCapitalizeSentence(
-                                                    data?.me?.type || ""
-                                                )}
+                                                {
+                                                    userTypeObject[
+                                                        data?.me
+                                                            ?.type as keyof typeof userTypeObject
+                                                    ]
+                                                }
                                             </p>
                                         </div>
                                         <p className="min-w-7 ml-auto mr-0 w-7 h-7 flex items-center justify-center rounded-full bg-[#00395D] text-[#00AEEF] font-medium text-md   g-sans">
-                                            {data?.me?.name.charAt(0)}
+                                            {data?.me?.name
+                                                .charAt(0)
+                                                .toUpperCase()}
                                         </p>
                                     </div>
                                     <div className="my-1 h-px bg-gray-200" />

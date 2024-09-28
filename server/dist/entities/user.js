@@ -26,6 +26,16 @@ __decorate([
 ], User.prototype, "name", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ default: "https://i.ibb.co/ZLw7SsS/icons8-test-account-96.png" }),
+    __metadata("design:type", String)
+], User.prototype, "avatar", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.Column)({ default: "Hello there" }),
+    __metadata("design:type", String)
+], User.prototype, "bio", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
     (0, typeorm_1.Column)({ default: "RES" }),
     __metadata("design:type", String)
 ], User.prototype, "type", void 0);
